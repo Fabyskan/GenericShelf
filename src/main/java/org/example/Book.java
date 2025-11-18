@@ -7,6 +7,18 @@ public class Book extends Shelfitem{
     private final int pages;
 
     public Book(String title, String author, int pages){
+        if(pages < 1){
+            throw new IllegalArgumentException("A book must have at least one page.");
+        }
+        if(pages > 5000){
+            throw new IllegalArgumentException("A book cannot have more than 5000 pages.");
+        }
+        if(title == null || title.isEmpty()){
+            throw new IllegalArgumentException("Title cannot be null or empty.");
+        }
+        if(author == null || author.isEmpty()){
+            throw new IllegalArgumentException("Author cannot be null or empty.");
+        }
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -24,6 +36,6 @@ public class Book extends Shelfitem{
         return pages;
     }
 
- //   @Override
- //   public String toString(){}
+    @Override
+    public String toString(){return "A";}
 }
