@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Comparator;
 
 public class Shelf<T extends Iterable<T>> {
     private T upperLeft;
@@ -37,13 +38,13 @@ public class Shelf<T extends Iterable<T>> {
         return lowerRight;
     }
 
-    public T get(int i){}
+    public T get(int i){ return null; }
 
     public void set(int i, T item) {}
 
     public void takeFrom(Shelf other) {}
 
-    public T max(Comparator comparator) {}
+    public T max(Comparator comparator) { return null; }
 
     public static void transferAndTrim(Shelf from, Shelf to) {}
 }

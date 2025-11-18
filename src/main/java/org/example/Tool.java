@@ -12,6 +12,6 @@ public class Tool extends Shelfitem{
         return name;
     }
 
-    @Override
-    public String toString(){}
+ //   @Override
+ //   public String toString(){}
 }
