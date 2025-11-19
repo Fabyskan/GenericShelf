@@ -13,10 +13,10 @@ public class Book extends Shelfitem{
         if(pages > 5000){
             throw new IllegalArgumentException("A book cannot have more than 5000 pages.");
         }
-        if(title == null || title.isEmpty()){
+        if(title == null || title.isBlank()){
             throw new IllegalArgumentException("Title cannot be null or empty.");
         }
-        if(author == null || author.isEmpty()){
+        if(author == null || author.isBlank()){
             throw new IllegalArgumentException("Author cannot be null or empty.");
         }
         this.title = title;
