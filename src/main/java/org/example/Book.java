@@ -37,5 +37,7 @@ public class Book extends Shelfitem{
     }
 
     @Override
-    public String toString(){return "A";}
+    public String toString(){
+        return "Book{title='"+getTitle()+"', author='"+getAuthor()+"', pages="+getPages()+"}";
+    }
 }

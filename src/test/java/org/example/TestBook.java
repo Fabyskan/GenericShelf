@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.*;
 
 public class TestBook {
 
+    // CONSTRUCTOR TESTS
+
     @Test
     public void constructor_setsAllFields(){
         //arrange
@@ -60,6 +62,8 @@ public class TestBook {
         //assert
         assertEquals(pages, book.getPages());
     }
+
+    // TO STRING TEST
 
     @Test
     public void ToString_testFormat(){

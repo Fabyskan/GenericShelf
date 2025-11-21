@@ -4,14 +4,21 @@ public class Tool extends Shelfitem{
 
     private final String name;
 
-    public Tool(String name){
+    public Tool(String name)
+    {
+        if(name == null || name.isBlank()){
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
         this.name = name;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
- //   @Override
- //   public String toString(){}
+    @Override
+    public String toString(){
+        return "Book{title='"+getName()+"'}";
+    }
 }
