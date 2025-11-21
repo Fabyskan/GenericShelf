@@ -18,13 +18,21 @@ public class ShelfMain {
                 new Tool("Säge")
         );
 
+        Shelf<Book> newBookShelf = new Shelf<>();
+        Shelf<ShelfItem> generalShelf = new Shelf<>();
         // Act
         printShelf(bookShelf);
         printShelf(toolShelf);
+        newBookShelf.takeFrom(bookShelf);
+        printShelf(bookShelf);
+        printShelf(newBookShelf);
+        generalShelf.takeFrom(newBookShelf);
+        printShelf(newBookShelf);
+        printShelf(generalShelf);
     }
 
     public static void printShelf(Shelf<?> shelf) {
-        for (Shelfitem item : shelf) {
+        for (ShelfItem item : shelf) {
             System.out.println(item);
         }
     }

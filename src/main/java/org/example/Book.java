@@ -1,6 +1,6 @@
 package org.example;
 
-public class Book extends Shelfitem{
+public class Book extends ShelfItem {
 
     private final String title;
     private final String author;

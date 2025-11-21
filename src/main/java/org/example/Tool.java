@@ -1,6 +1,6 @@
 package org.example;
 
-public class Tool extends Shelfitem{
+public class Tool extends ShelfItem {
 
     private final String name;
 

@@ -3,7 +3,7 @@ package org.example;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class Shelf<T extends Shelfitem> implements Iterable<T> {
+public class Shelf<T extends ShelfItem> implements Iterable<T> {
 private T upperLeft;
 private T upperRight;
 private T lowerLeft;
@@ -108,10 +108,43 @@ public Iterator<T> iterator() {
     }
 }
 
+
+    public void takeFrom(Shelf<? extends ShelfItem> other) {
+    this.upperLeft = (T) other.getUpperLeft();
+    this.upperRight = (T) other.getUpperRight();
+    this.lowerLeft = (T) other.getLowerLeft();
+    this.lowerRight = (T) other.getLowerRight();
+    other.upperLeft = null;
+    other.upperRight = null;
+    other.lowerLeft = null;
+    other.lowerRight = null;
+    }
+
+//    public T max(Comparator<T> comparator) {
+//    T maxItem = null;
+//    for(T item : this) {
+//        if(item != null) {
+//            if(maxItem == null || comparator.compare(item, maxItem) > 0) {
+//                maxItem = item;
+//            }
+//        }
+//    }
+//    return maxItem;
+//    }
 //
-//    public void takeFrom(Shelf other) {}
+//    public static void transferAndTrim(Shelf<? extends ShelfItem> from, Shelf<? extends ShelfItem>  to) {
+//        to.upperLeft = null;
+//        to.upperRight = null;
+//        to.lowerLeft = null;
+//        to.lowerRight = null;
+//        int index = 0;
+//        var iterator = to.iterator();
+//        if(iterator.hasNext()) {
+//        }
+//        to.upperLeft = (T) from.getUpperLeft();
+//        to.upperRight = (T) from.getUpperRight();
+//        to.lowerLeft = (T) from.getLowerLeft();
+//        to.lowerRight = (T) from.getLowerRight();
 //
-//    public T max(Comparator comparator) { return null; }
-//
-//    public static void transferAndTrim(Shelf from, Shelf to) {}
+//    }
 }
