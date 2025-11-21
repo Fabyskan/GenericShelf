@@ -18,8 +18,7 @@ public class TestTool {
     }
 
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {""," "})
+    @NullAndEmptySource
     public void constructor_throwsException_whenNameIsNullOrBlank(String input){
         //arrange
         //act

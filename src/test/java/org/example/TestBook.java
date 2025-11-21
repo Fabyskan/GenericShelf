@@ -23,8 +23,7 @@ public class TestBook {
     }
 
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {""," "})
+    @NullAndEmptySource
     public void constructor_throwsException_whenAuthorIsNullOrBlank(String input){
         //arrange
         //act
@@ -34,8 +33,7 @@ public class TestBook {
 
 
     @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {""," "})
+    @NullAndEmptySource
     public void constructor_throwsException_whenTitleIsNullOrBlank(String input){
         //arrange
         //act

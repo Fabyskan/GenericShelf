@@ -19,6 +19,6 @@ public class Tool extends Shelfitem{
 
     @Override
     public String toString(){
-        return "Book{title='"+getName()+"'}";
+        return "Tool{name='"+getName()+"'}";
     }
 }
