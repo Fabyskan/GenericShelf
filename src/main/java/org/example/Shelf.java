@@ -120,31 +120,38 @@ public Iterator<T> iterator() {
     other.lowerRight = null;
     }
 
-//    public T max(Comparator<T> comparator) {
-//    T maxItem = null;
-//    for(T item : this) {
-//        if(item != null) {
-//            if(maxItem == null || comparator.compare(item, maxItem) > 0) {
-//                maxItem = item;
-//            }
-//        }
-//    }
-//    return maxItem;
-//    }
-//
-//    public static void transferAndTrim(Shelf<? extends ShelfItem> from, Shelf<? extends ShelfItem>  to) {
-//        to.upperLeft = null;
-//        to.upperRight = null;
-//        to.lowerLeft = null;
-//        to.lowerRight = null;
-//        int index = 0;
-//        var iterator = to.iterator();
-//        if(iterator.hasNext()) {
-//        }
-//        to.upperLeft = (T) from.getUpperLeft();
-//        to.upperRight = (T) from.getUpperRight();
-//        to.lowerLeft = (T) from.getLowerLeft();
-//        to.lowerRight = (T) from.getLowerRight();
-//
-//    }
+    public T max(Comparator<? super T> comparator) {
+        T max = null;
+
+        for (T element : this) {      // über das Regal iterieren
+            if (element == null) continue;
+
+            if (max == null || comparator.compare(element, max) > 0) {
+                max = element;
+            }
+        }
+
+        return max;
+    }
+
+
+
+    public static <T extends ShelfItem> void transferAndTrim(Shelf<T> from, Shelf<? super T> to) {
+        // Ziel vorher leeren
+        for (int i = 0; i < 4; i++) {
+            to.set(i, null);
+        }
+
+        int targetIndex = 0;
+
+        for (T element : from) {
+            if (element != null) {
+                if (targetIndex < 4) {
+                    to.set(targetIndex, element);
+                    targetIndex++;
+                }
+            }
+        }
+    }
+
 }

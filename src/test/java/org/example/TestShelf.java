@@ -4,6 +4,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
+import java.util.Comparator;
+
 public class TestShelf {
 
     // CONSTRUCTOR TESTS
@@ -176,18 +178,36 @@ public class TestShelf {
     @Test
     public void max_returnsCorrectItem() {
         //arrange
-        Shelf<ShelfItem> shelf = new Shelf<>();
-        Tool ul = new Tool("Hammer");
-        Book ur = new Book("Book1", "Author1", 100);
-        Tool ll = new Tool("Screwdriver");
-        Book lr = new Book("Book2", "Author2", 200);
-        shelf.setUpperLeft(ul);
-        shelf.setUpperRight(ur);
-        shelf.setLowerLeft(ll);
-        shelf.setLowerRight(lr);
+        Shelf<Book> shelf = new Shelf<>();
+        shelf.set(0, new Book("A", "X", 100));
+        shelf.set(1, new Book("B", "Y", 300));
+        shelf.set(2, null);
+        shelf.set(3, new Book("C", "Z", 200));
         //act
-        ShelfItem maxItem = shelf.max();
+        Book result = shelf.max(Comparator.comparing(Book::getPages));
         //assert
-        assertEquals(lr, maxItem);
+        assertEquals(300, result.getPages());
     }
+
+    @Test
+    public void testTransferAndTrim() {
+        //arrange
+        Shelf<Tool> from = new Shelf<>();
+        from.set(0, new Tool("Hammer"));
+        from.set(1, null);
+        from.set(2, new Tool("Säge"));
+        from.set(3, new Tool("Zange"));
+
+        Shelf<Tool> to = new Shelf<>();
+        to.set(0, new Tool("Alt1"));
+        to.set(1, new Tool("Alt2"));
+        // act
+        Shelf.transferAndTrim(from, to);
+        //assert
+        assertEquals("Hammer", to.get(0).getName());
+        assertEquals("Säge",   to.get(1).getName());
+        assertEquals("Zange",  to.get(2).getName());
+        assertNull(to.get(3));
+    }
+
 }

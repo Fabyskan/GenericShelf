@@ -1,6 +1,10 @@
 package org.example;
 
 
+import java.util.Comparator;
+
+import static org.example.Shelf.transferAndTrim;
+
 public class ShelfMain {
     public static void main(String[] args) {
         // Arrange
@@ -23,11 +27,21 @@ public class ShelfMain {
         // Act
         printShelf(bookShelf);
         printShelf(toolShelf);
-        newBookShelf.takeFrom(bookShelf);
-        printShelf(bookShelf);
-        printShelf(newBookShelf);
-        generalShelf.takeFrom(newBookShelf);
-        printShelf(newBookShelf);
+//        newBookShelf.takeFrom(bookShelf);
+//        printShelf(bookShelf);
+//        printShelf(newBookShelf);
+//        generalShelf.takeFrom(newBookShelf);
+//        printShelf(newBookShelf);
+//        printShelf(generalShelf);
+
+        System.out.println("Done");
+
+        Book result = bookShelf.max(Comparator.comparing(Book::getPages));
+        Shelf<Book> resultShelf = new Shelf<>(result, null, null, null);
+        printShelf(resultShelf);
+
+        transferAndTrim(bookShelf, newBookShelf);
+        transferAndTrim(newBookShelf, generalShelf);
         printShelf(generalShelf);
     }
 
